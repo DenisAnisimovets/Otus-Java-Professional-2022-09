@@ -3,14 +3,14 @@ package danis.homework;
 public class Starter {
 
     public static void main(String[] args) {
-        Storage storage = new Storage();
-        System.out.println(storage.getCells());
-        storage.addBanknote(10, 5);
-        storage.addBanknote(100, 5);
-        storage.addBanknote(50, 10);
-        System.out.println(storage.getCells());
-        storage.take(20);
-        System.out.println(storage.getCells());
+        ATM atm = new ATM();
+        atm.showBanknotsInATM();
+        atm.addMoney(Banknote.Nom_10, 5);
+        atm.addMoney(Banknote.Nom_100, 5);
+        atm.addMoney(Banknote.Nom_50, 10);
+        atm.showBanknotsInATM();
+        atm.take(20);
+        atm.showBanknotsInATM();
 
     }
 }
