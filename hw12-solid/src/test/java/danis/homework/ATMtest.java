@@ -29,7 +29,7 @@ public class ATMtest {
     @Test
     @DisplayName("Выдача корректной суммы")
     void takeCorrect() {
-        System.out.println("Пытаемся выдать 300");
+        System.out.println("Пытаемся выдать 160");
         atm.take(160);
     }
 
