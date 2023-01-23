@@ -15,7 +15,7 @@ public class ObjectForMessage {
     }
 
     public List<String> getData() {
-        return data;
+        return new ArrayList<>(data);
     }
 
     public void setData(List<String> data) {

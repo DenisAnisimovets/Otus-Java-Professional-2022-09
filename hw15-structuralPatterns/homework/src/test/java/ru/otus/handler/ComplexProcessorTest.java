@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import ru.otus.model.Message;
 import ru.otus.listener.Listener;
 import ru.otus.processor.Processor;
+import ru.otus.processor.homework.ProcessorSecond;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,18 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class ComplexProcessorTest {
+
+    @Test
+    @DisplayName("Тестируем выбрасывание исключения на четной секунде")
+    void secondSecondExeption() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() ->
+        {
+            ProcessorSecond processorSecond =
+                    new ProcessorSecond(()->
+                            LocalDateTime.of(2000, 1, 1, 1, 1, 22).getSecond());
+        processorSecond.process( new Message.Builder(1L).field1("1").build());
+        });
+    }
 
     @Test
     @DisplayName("Тестируем вызовы процессоров")

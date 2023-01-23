@@ -16,7 +16,7 @@ public class ProcessorSecond implements Processor {
 
     @Override
     public Message process(Message message) {
-        long seconds = LocalDateTime.now().getSecond();
+        long seconds = dateTimeProvider.getSeconds();
         if(seconds % 2 == 0) {
             throw new RuntimeException("Произошла какая-то ошибка!");
         }

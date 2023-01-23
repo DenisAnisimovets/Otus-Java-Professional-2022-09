@@ -87,8 +87,8 @@ public class Message {
     }
 
     public ObjectForMessage getField13() {
-        //return field13;
-        return new ObjectForMessage(field13);
+        return field13;
+        //return new ObjectForMessage(field13);
     }
 
     @Override
