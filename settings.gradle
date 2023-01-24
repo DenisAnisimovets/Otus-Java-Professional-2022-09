@@ -4,4 +4,7 @@ include 'hw04-generics'
 include 'hw06-test-framework'
 include 'hw08-gs'
 include 'hw10-byteCodes'
+include 'hw15-structuralPatterns:homework'
 include 'hw16-io:homework'
+
+
