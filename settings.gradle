@@ -7,4 +7,7 @@ include 'hw10-byteCodes'
 include 'hw12-solid'
 include 'hw15-structuralPatterns:homework'
 include 'hw16-io:homework'
+include 'hw18-jdbc:demo'
+include 'hw18-jdbc:homework'
+
 
