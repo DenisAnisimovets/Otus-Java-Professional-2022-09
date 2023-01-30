@@ -1,6 +1,6 @@
 package ru.otus.jdbc.mapper;
 
-import ru.otus.crm.model.Id;
+import ru.otus.annotation.Id;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
