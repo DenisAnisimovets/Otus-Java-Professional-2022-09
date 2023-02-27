@@ -17,11 +17,12 @@ public class DbServiceClientImpl implements DBServiceClient {
 
     private final DataTemplate<Client> dataTemplate;
     private final TransactionRunner transactionRunner;
-    private final HwCache<Long, Client> cache = new MyCache<>();
+    private final HwCache<Long, Client> cache;
 
-    public DbServiceClientImpl(TransactionRunner transactionRunner, DataTemplate<Client> dataTemplate) {
+    public DbServiceClientImpl(TransactionRunner transactionRunner, DataTemplate<Client> dataTemplate, HwCache cache) {
         this.transactionRunner = transactionRunner;
         this.dataTemplate = dataTemplate;
+        this.cache = cache;
 
         HwListener<Long, Client> listener = new HwListener<>() {
             @Override
@@ -54,6 +55,7 @@ public class DbServiceClientImpl implements DBServiceClient {
         if(client == null) {
         return transactionRunner.doInTransaction(connection -> {
             var clientOptional = dataTemplate.findById(connection, id);
+            clientOptional.ifPresent(client1 -> cache.put(client1.getId(), client1));
             log.info("client: {}", clientOptional);
             return clientOptional;
         });

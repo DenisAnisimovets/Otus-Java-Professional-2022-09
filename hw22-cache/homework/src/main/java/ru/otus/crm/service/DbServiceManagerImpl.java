@@ -17,11 +17,12 @@ public class DbServiceManagerImpl implements DBServiceManager {
 
     private final DataTemplate<Manager> managerDataTemplate;
     private final TransactionRunner transactionRunner;
-    private final HwCache<Long, Manager> cache = new MyCache<>();
+    private final HwCache<Long, Manager> cache;
 
-    public DbServiceManagerImpl(TransactionRunner transactionRunner, DataTemplate<Manager> managerDataTemplate) {
+    public DbServiceManagerImpl(TransactionRunner transactionRunner, DataTemplate<Manager> managerDataTemplate, MyCache<Long, Manager> cacheManager) {
         this.transactionRunner = transactionRunner;
         this.managerDataTemplate = managerDataTemplate;
+        this.cache = cacheManager;
 
         HwListener<Long, Manager> listener = new HwListener<>() {
             @Override
@@ -54,6 +55,7 @@ public class DbServiceManagerImpl implements DBServiceManager {
         if(manager == null) {
             return transactionRunner.doInTransaction(connection -> {
                 var managerOptional = managerDataTemplate.findById(connection, no);
+                managerOptional.ifPresent(manager1 -> cache.put(manager1.getNo(), manager1));
                 log.info("manager: {}", managerOptional);
                 return managerOptional;
             });
