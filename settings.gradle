@@ -15,6 +15,7 @@ include 'hw22-cache:homework'
 include 'hw25-dependency-injection'
 include 'hw31-executors'
 include 'hw32-concurrentCollections:homework'
+include 'hw33-grpc'
 include 'hw37-webflux:client-service'
 include 'hw37-webflux:datastore-service'
 
