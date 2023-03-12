@@ -6,9 +6,14 @@ public interface Versions {
     String stomp = "2.3.4";
     String bootstrap = "5.2.3";
 
+
+    String errorProneAnnotations = "2.11.0";
+    String tomcatAnnotationsApi = "6.0.53";
+    String grpc = "1.44.1";
+    String wiremock = "3.0.0-beta-2";
+
     String gson = "2.10.1";
     String jetty = "11.0.7";
     String freemarker = "2.3.31";
-
     String r2dbcPostgresql = "0.8.13.RELEASE";
 }
